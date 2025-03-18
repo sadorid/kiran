@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Proposal Animation</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            overflow: hidden;
+            transition: background 1s ease-in-out;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .active {
+            display: flex;
+        }
+        .btn {
+            padding: 12px 24px;
+            margin-top: 15px;
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 77, 77, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn:hover {
+            background: #ff1a1a;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 26, 26, 0.7);
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .stars div, .balloons div, .flowers div {
+            position: absolute;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body id="body">
+    <div class="container active" id="page1">
+        <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="Welcome Gif" loading="lazy">
+        <h1 style="font-size: 2.5rem; color: #ff1a1a;">Hello bacha ❤️</h1>
+        <button class="btn" onclick="nextPage(2)">Next</button>
+    </div>
+    <div class="container" id="page2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwi6Th9pLiR2Suev36wi800NU6b3aLMubteYM2F5DVHhclY3PacWiA96lf9PWNQMaT0m8&usqp=CAU" alt="Shayari Image" loading="lazy">
+        <h2 style="font-size: 2rem; color: #ff6600;">tere liye ek shayari hai ..</h2>
+        <button class="btn" onclick="nextPage(3)">click kar jalidi</button>
+    </div>
+    <div class="container" id="page3">
+        <h2 style="font-size: 1.8rem; color: #ff3399;">"Tere bina adhura lagta hai sab kuch,<br> Tujhse baat na ho to dil bechain rehta hai..."</h2>
+        <button class="btn" onclick="nextPage(4)">Chale aage?</button>
+    </div>
+    <div class="container" id="page4">
+        <img src="https://s3.envato.com/files/432748665/chvet-0838.jpg" alt="Proposal Image" style="border: 3px solid #cc33ff; border-radius: 10px;" loading="lazy">
+        <h2 style="font-size: 1.8rem; color: #cc33ff;">"Tere khayalon me din guzar jata hai,<br> Raat bhar sirf tu yaad aata hai,<br> Kya tu meri banegi ?,<br> i love u"</h2>
+        <button class="btn" onclick="nextPage(5)">ha gadhe</button>
+        <button class="btn" onclick="nextPage(5)">Of Course</button>
+    </div>
+    <div class="container" id="page5">
+        <h2 style="font-size: 2.5rem; color: #008000;">🎉 Congratulations GADHI TU MERI HUI abhi se 🎉</h2>
+        <div class="flowers"></div>
+    </div>
+    <div class="stars"></div>
+    <div class="balloons"></div>
+    <script>
+        let colors = ['#ffcccc', '#ffb3b3', '#ff9999', '#ff6666', '#ff4d4d'];
+        function nextPage(pageNum) {
+            document.querySelectorAll('.container').forEach(div => div.classList.remove('active'));
+            document.getElementById('page' + pageNum).classList.add('active');
+            document.body.style.background = colors[pageNum - 1];
+        }
+    </script>
+</body>
+</html>
