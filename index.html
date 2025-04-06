@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday [Her Name]</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            text-align: center;
+            padding: 10px;
+            background-color: #fce1e4;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 35px;
+            color: #ec407a;
+            font-family: 'Cursive', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #ec407a;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 30px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background-color: #d81b60;
+        }
+
+        /* Fireworks GIF Fullscreen */
+        #fireworks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('https://i.pinimg.com/originals/03/6e/fd/036efde081d8886326ea80bc7f39577c.gif') no-repeat center center;
+            background-size: cover;
+            z-index: 9999;
+            display: none;
+            animation: showFireworks 5s forwards;
+        }
+
+        @keyframes showFireworks {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Happy Birthday Message Animation */
+        #birthdayMessage {
+            display: none;
+            font-size: 40px;
+            color: #ec407a;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .message {
+            font-size: 20px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #d81b60;
+            font-weight: bold;
+        }
+
+        .quote {
+            font-size: 18px;
+            font-style: italic;
+            margin-top: 20px;
+            color: #8e24aa;
+        }
+
+        /* Video Page Styles */
+        #videoPage, #secondVideoPage {
+            display: none;
+        }
+
+        video {
+            width: 100%;
+            max-width: 500px; /* Ensures the video fits on small screens */
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Surprise Popup Styles */
+        #surprisePopup {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999;
+            width: 80%;
+            max-width: 300px;
+        }
+        #surprisePopup img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- First Page: Main Birthday Greeting -->
+    <div id="page1">
+        <h1>Happy Birthday, [Her Name]!</h1>
+        <p>On your special day, I want you to know how much you mean to me.</p>
+        <button class="button" onclick="showSecondPage()">Click for a Special Message</button>
+    </div>
+
+    <!-- Second Page: Special Message with Animation -->
+    <div id="page2" style="display:none;">
+        <h1>Your Special Message</h1>
+        <div class="message" style="animation: fadeIn 3s ease-in-out;">
+            <p>Hey <span class="highlight">[Her Name]</span>,</p>
+            <p>There’s no way I can express in words how amazing you are. You’re more than a friend, you're a blessing. Your kindness, intelligence, and charm light up every room you enter.</p>
+            <p>Happy Birthday, and thank you for being the wonderful person you are!</p>
+        </div>
+        <button class="button" onclick="showThirdPage()">Continue to a Special Video</button>
+    </div>
+
+    <!-- Third Page: First Special Video -->
+    <div id="videoPage">
+        <h1>Here’s a Special Video Just for You!</h1>
+        <video controls>
+            <source src="your-video-url-1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <br>
+        <button class="button" onclick="showSecondVideoPage()">Continue to Another Video</button>
+    </div>
+
+    <!-- Fourth Page: Second Special Video -->
+    <div id="secondVideoPage">
+        <h1>Another Special Video Just for You!</h1>
+        <video controls>
+            <source src="your-video-url-2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <br>
+        <button class="button" onclick="showFireworksAndMessage()">Continue to the Celebration</button>
+    </div>
+
+    <!-- Fireworks Animation -->
+    <div id="fireworks"></div>
+
+    <!-- Happy Birthday Message -->
+    <div id="birthdayMessage">
+        <h1>Happy Birthday Once Again!</h1>
+    </div>
+
+    <!-- Surprise Popup -->
+    <div id="surprisePopup">
+        <h2>Surprise! 🎁</h2>
+        <p>Here’s something special just for you!</p>
+        <img src="your-surprise-image.jpg" alt="Surprise Image" />
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <audio id="birthdayAudio" autoplay loop>
+        <source src="your-audio-file.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // Function to trigger confetti (celebration effect)
+        function triggerConfetti() {
+            confetti({
+                particleCount: 100,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0.8, y: 0.8 }
+            });
+            confetti({
+                particleCount: 100,
+                angle: 120,
+                spread: 55,
+                origin: { x: 0.2, y: 0.8 }
+            });
+        }
+
+        // Function to show second page and trigger celebration effect
+        function showSecondPage() {
+            document.getElementById("page1").style.display = "none";
+            document.getElementById("page2").style.display = "block";
+            triggerConfetti(); // Trigger confetti when transitioning to second page
+        }
+
+        // Function to show third page and trigger celebration effect
+        function showThirdPage() {
+            document.getElementById("page2").style.display = "none";
+            document.getElementById("videoPage").style.display = "block";
+            triggerConfetti(); // Trigger confetti when transitioning to third page
+        }
+
+        // Function to show second video page and trigger celebration effect
+        function showSecondVideoPage() {
+            document.getElementById("videoPage").style.display = "none";
+            document.getElementById("secondVideoPage").style.display = "block";
+            triggerConfetti(); // Trigger confetti when transitioning to second video page
+        }
+
+        // Function to show fireworks and birthday message after celebration
+        function showFireworksAndMessage() {
+            document.getElementById("secondVideoPage").style.display = "none";
+            document.getElementById("fireworks").style.display = "block";
+            triggerConfetti(); // Trigger confetti before fireworks
+
+            setTimeout(function() {
+                document.getElementById("fireworks").style.display = "none";
+                document.getElementById("birthdayMessage").style.display = "block";
+            }, 5000); // 5 seconds for fireworks
+        }
+
+        // Function to close surprise popup
+        function closePopup() {
+            document.getElementById("surprisePopup").style.display = "none";
+        }
+
+        // Function to show surprise popup (if needed)
+        function showSurprise() {
+            document.getElementById("surprisePopup").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
